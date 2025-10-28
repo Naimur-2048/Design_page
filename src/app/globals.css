@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ededed;
     --foreground: #ededed;
   }
 }
@@ -23,4 +23,40 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.animated-gradient {
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+.background-changer {
+  
+  background-color: red;
+  animation-duration: 10s;
+  animation-name: backgroundChangeAnimation;
+  /* transition: all ease-in-out 500ms; */
+}
+
+@keyframes backgroundChangeAnimation {
+  0% {background: red;}
+  25% {background: purple;}
+  50% {background: blue;}
+  75% {background: orange;}
+  100% {background: green;}
+}
+
+@keyframes backgroundChangeAnimation2 {
+  0% {background-image: linear-gradient(to bottom, red, purple); 
+  }
+  25% {background-image: linear-gradient(to top, purple, blue);
+  }
+  50% {background-image: linear-gradient(to left, blue, orange);
+  }
+  75% {background-image: linear-gradient(to right, orange, yellow);
+  }
+  100% {background-image: linear-gradient(to bottom, yellow, green);
+  }
+}
+.bg-images{
+  background-image: url('/public/images/two.jpg');
 }
