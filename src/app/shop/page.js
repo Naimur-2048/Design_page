@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { GiSnakeJar } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
@@ -18,6 +18,9 @@ import { CiVideoOn } from "react-icons/ci";
 import Link from 'next/link';
 
 const page = () => {
+  const [openButton, setOpenButton] = useState(false);
+  console.log(openButton)
+
   return (
     <>
       <div className='h-full w-full '>
@@ -147,17 +150,21 @@ const page = () => {
           <div className='w-130 pl-26'>
             <ul className='text-gray-700 font-semibold'>
               <li className=' '>
-                <Link href="/" className='flex justify-between items-center pb-5 border-b-1 border-gray-300'>
-                <p>Categories</p><FaChevronDown />
-                </Link>
-                <ul className='py-5 *:py-1 '>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                </ul>
+                <button onClick={() => setOpenButton(!openButton)} className='w-full flex justify-between items-center cursor-pointer pb-5 border-b-1 border-gray-300'>
+                  <p>Categories</p>
+                  <p><FaChevronDown /></p>
+                </button>
+                {openButton && (
+                  <ul className='py-5 *:py-1 bg-green-500  transform transition-all duration-300 ease-in-out '>
+                    <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
+                    <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Apparel</p></div></Link></li>
+                    <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Bikes</p></div></Link></li>
+                    <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Electronis</p></div></Link></li>
+                    <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Furniture</p></div></Link></li>
+                  </ul>
+                )}
               </li>
+
               <li className=' '><Link href="/" className='flex justify-between items-center py-3 border-b-1 border-gray-300'><p>Color</p><FaChevronDown /></Link></li>
               <li className=' '><Link href="/" className='flex justify-between items-center py-3 border-b-1 border-gray-300'><p>Brand</p><FaChevronDown /></Link></li>
               <li className=' '><Link href="/" className='flex justify-between items-center py-3 border-b-1 border-gray-300'><p>Price</p><FaChevronDown /></Link></li>
@@ -267,13 +274,13 @@ const page = () => {
         <div className=' absolute right-0 top-50 fixed' >
           <div className='p-5 flex flex-col gap-3   text-black bg-gray-300 w-15'>
             <CiSettings />
-          <TiMessage />
-          <IoMdHeartEmpty />
-          <FaBook />
-          <CiVideoOn />
+            <TiMessage />
+            <IoMdHeartEmpty />
+            <FaBook />
+            <CiVideoOn />
 
           </div>
-          
+
         </div>
 
 
