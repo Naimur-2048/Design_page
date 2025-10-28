@@ -150,12 +150,12 @@ const page = () => {
                 <Link href="/" className='flex justify-between items-center pb-5 border-b-1 border-gray-300'>
                 <p>Categories</p><FaChevronDown />
                 </Link>
-                <ul className='py-5 *:py-1 hover:*:text-gray-400'>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
-                  <li ><Link href=" /"> <div className='flex gap-2 items-center'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
+                <ul className='py-5 *:py-1 '>
+                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
+                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
+                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
+                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
+                  <li ><Link href=" /"> <div className='flex gap-2 items-center hover:text-gray-400'><div className='h-5 w-5 rounded-sm border-1 border-gray-400'></div> <p>Accessories</p></div></Link></li>
                 </ul>
               </li>
               <li className=' '><Link href="/" className='flex justify-between items-center py-3 border-b-1 border-gray-300'><p>Color</p><FaChevronDown /></Link></li>
