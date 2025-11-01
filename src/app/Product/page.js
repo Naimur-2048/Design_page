@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { GiSnakeJar } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
@@ -25,10 +25,18 @@ import { FaWhatsapp } from "react-icons/fa";
 import { PiButterflyDuotone } from "react-icons/pi";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { GoDotFill } from "react-icons/go";
+import { RiVisaLine } from "react-icons/ri";
+import { FaCcMastercard } from "react-icons/fa6";
+import { FaCcPaypal } from "react-icons/fa";
+import { FaCcStripe } from "react-icons/fa";
 import Link from 'next/link';
 
 
 const page = () => {
+  const [count, setCount] = useState(0);
+  const [changePage, setChangePage] = useState('false');
+
 
   return (
     <>
@@ -172,9 +180,9 @@ const page = () => {
 
             <div className='w-[51%] grid grid-cols-2 gap-2 py-4'>
               <div className='bg-gray-200 flex justify-between items-center text-black w-full'>
-                <button className='py-3 px-4 cursor-pointer'><FaMinus /></button>
-                <p><input className='w-12 h-full outline-none' /></p>
-                <button className='py-3 px-4 cursor-pointer'><FaPlus /></button>
+                <button onClick={() => setCount(count>0 ? count-1 : 0)} className='py-3 px-4 cursor-pointer'><FaMinus /></button>
+                <p><input value={count} className='w-12 h-full outline-none text-center' /></p>
+                <button onClick={() => setCount(count+1)} className='py-3 px-4 cursor-pointer'><FaPlus /></button>
               </div>
               <div className='w-full bg-[#303133] border-1 border-black text-white hover:bg-white hover:text-black cursor-pointer  py-3 px-5 text-center'>
                 <span className='text-center  '>Add to Cart</span>
@@ -216,9 +224,170 @@ const page = () => {
             </ul>
 
           </div>
+        </div>
 
+        <div className='w-full '>
+          <ul className='text-black flex justify-center items-center  gap-8 py-5'>
+            <li>Description</li>
+            <li>Product Information</li>
+            <li>Size Guide</li>
+            <li>Reviews</li>
+            <li>Shiping & Return</li>
+          </ul>
 
         </div>
+      {/* 2nd page */}
+        <div>
+          <div className='w-full grid grid-cols-3 '>
+          <div><img src='images/demo.png' className='h-[625px] w-full '/></div>
+          <div><img src='images/demo1.png' className='h-[625px] w-full '/></div>
+          <div><img src='images/demo2.png' className='h-[625px] w-full '/></div>
+        
+        </div>
+
+        <div className='grid grid-cols-3 gap-10 w-full px-25 py-20'>
+          <div>
+            <span className='text-black font-bold text-[20px] '>Specifications</span>
+            <p className='text-gray-500 py-5'>
+              Its compact design size makes it ideal for travel or the perfect
+               body for everyday carry, the classic aluminum body gives it a
+                tactile feel, proprietary low-velocity port design minimizes 
+                distortion.
+            </p>
+          </div>
+          <div>
+            <span className='text-black font-bold text-[20px] '>Materials</span>
+            <p className='text-gray-500 py-5'>
+              Its compact design size makes it ideal for travel or the perfect
+               body for everyday carry, the classic aluminum body gives it a
+                tactile feel, proprietary low-velocity port design minimizes 
+                distortion.
+            </p>
+          </div>
+          <div>
+            <span className='text-black font-bold text-[20px] ' >Maintance</span>
+            <p className='text-gray-500 py-5'>
+              Its compact design size makes it ideal for travel or the perfect
+               body for everyday carry, the classic aluminum body gives it a
+                tactile feel, proprietary low-velocity port design minimizes 
+                distortion.
+            </p>
+          </div>
+          <div>
+            <span className='text-black font-bold text-[20px] '>Vsibility</span>
+            <p className='text-gray-500 py-5'>
+              Its compact design size makes it ideal for travel or the perfect
+               body for everyday carry, the classic aluminum body gives it a
+                tactile feel, proprietary low-velocity port design minimizes 
+                distortion.
+            </p>
+          </div>
+          <div>
+            <span className='text-black font-bold text-[20px] '>Treatment</span>
+            <p className='text-gray-500 py-5'>
+              Its compact design size makes it ideal for travel or the perfect
+               body for everyday carry, the classic aluminum body gives it a
+                tactile feel, proprietary low-velocity port design minimizes 
+                distortion.
+            </p>
+          </div>
+          <div>
+            <span className='text-black font-bold text-[20px] '>Sustainable</span>
+            <p className='text-gray-500 py-5'>
+              Its compact design size makes it ideal for travel or the perfect
+               body for everyday carry, the classic aluminum body gives it a
+                tactile feel, proprietary low-velocity port design minimizes 
+                distortion.
+            </p>
+          </div>
+        </div>
+
+        <div className='w-full grid grid-cols-2 gap-20 pb-25 px-25 border-b-1 border-gray-300'>
+          <div><img src='images/demo4.png' className='h-[773px] w-full '/></div>
+          <div className='flex justify-center items-center'><img src='images/abc.png' className='h-[541px] w-[433px] '/></div>
+          <div className='flex justify-center items-center'><img src='images/abc.png' className='h-[541px] w-[433px] '/></div>
+          <div><img src='images/abc.png' className='h-[773px] w-full '/></div>
+
+        </div>
+
+        </div>
+
+        {/* You Might like you */}
+        <div className='w-full px-25 py-25'>
+          <p className=' text-center text-black font-semibold  text-[20px]'>You Might Also Like</p>
+          {changePage &&(
+            <div className='grid grid-cols-4 gap-5 py-20'>
+            <div > <img src='images/cap1.png' className='h-[393px] w-full'/></div>
+            <div > <img src='images/jacket1.png' className='h-[393px] w-full'/></div>
+            <div > <img src='images/bag3.png' className='h-[393px] w-full'/></div>
+            <div> <img src='images/bag1.png' className='h-[393px] w-full'/></div>
+          </div>
+
+          )}
+          <div className='w-full flex gap-2 justify-center items-center text-gray-400 '>
+            <p onClick={() => setChangePage(!changePage)}><GoDotFill /></p>
+            <p><GoDotFill /></p>
+            <p><GoDotFill /></p>
+
+          </div>
+
+        </div>
+
+        <div className='w-full bg-[#1B1D1F] grid grid-cols-2 py-25 px-25'>
+          <div>
+            <span className='text-[30px]'>Sign up for our newsletter</span>
+            <div className='pr-50 relative py-10'>
+              <input placeholder='Your Email' className='p-2 bg-[#17191A] mr-20 h-full w-full '/>
+              <button className='bg-gray-700 px-3 py-1 cursor-pointer hover:bg-[#1B1D1F] absolute right-51 mt-10 top-0'>Subscribes</button>
+            </div>
+            <span className='flex gap-2'><RiVisaLine size={30}/> <FaCcMastercard size={30} /><FaCcPaypal size={30} /><FaCcStripe size={30} /></span>
+          </div>
+
+          <div className='grid grid-cols-3'>
+             <div>
+              <p className='mb-10'>SHOP</p>
+              <ul className='*:py-1 *:text-sm'>
+                <li><Link href={'/'} className='hover:text-orange-700'> Shop All</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Woman Collection</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Man Collection</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Accessories</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> New Arrivals</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Latest Collection</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Gift Card</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Top seller</Link></li>               
+              </ul>
+            </div>
+
+            <div>
+              <p className='mb-10'>NEVAGATION</p>
+              <ul className='*:py-1 *:text-sm'>
+                <li><Link href={'/'} className='hover:text-orange-700'> Faqs</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Shipping</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Returns</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Terms</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Contract Us</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Privacy</Link></li>  
+              </ul>
+            </div>
+
+            <div>
+              <p className='mb-10'>CUSTOMERS</p>
+              <ul className='*:py-1 *:text-sm'>
+                <li><Link href={'/'} className='hover:text-orange-700'> Faqs</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Shipping</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Returns</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Terms</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Contract Us</Link></li>
+                <li><Link href={'/'} className='hover:text-orange-700'> Privacy</Link></li>  
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        
 
 
 
