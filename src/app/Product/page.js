@@ -35,7 +35,13 @@ import Link from 'next/link';
 
 const page = () => {
   const [count, setCount] = useState(0);
-  const [changePage, setChangePage] = useState('false');
+  const [changePage, setChangePage] = useState('one');
+  
+   const selecttab = (pres) =>{
+    setChangePage(pres)
+    console.log(changePage)
+
+   }
 
 
   return (
@@ -315,7 +321,7 @@ const page = () => {
         {/* You Might like you */}
         <div className='w-full px-25 py-25'>
           <p className=' text-center text-black font-semibold  text-[20px]'>You Might Also Like</p>
-          {changePage &&(
+          { changePage == 'one' &&(
             <div className='grid grid-cols-4 gap-5 py-20'>
             <div > <img src='images/cap1.png' className='h-[393px] w-full'/></div>
             <div > <img src='images/jacket1.png' className='h-[393px] w-full'/></div>
@@ -324,9 +330,19 @@ const page = () => {
           </div>
 
           )}
+          
+          { changePage == 'two' && (
+            <div className='grid grid-cols-4 gap-5 py-20'>
+            <div > <img src='images/ts1.png' className='h-[393px] w-full'/></div>
+            <div > <img src='images/ts2.png' className='h-[393px] w-full'/></div>
+            <div > <img src='images/sm.png' className='h-[393px] w-full'/></div>
+            <div> <img src='images/s.png' className='h-[393px] w-full'/></div>
+          </div>
+
+          )}
           <div className='w-full flex gap-2 justify-center items-center text-gray-400 '>
-            <p onClick={() => setChangePage(!changePage)}><GoDotFill /></p>
-            <p><GoDotFill /></p>
+            <button onClick={() => selecttab('one')} className='cursor-pointer'><GoDotFill /></button>
+            <button onClick={() => selecttab('two')} className='cursor-pointer'><GoDotFill /></button>
             <p><GoDotFill /></p>
 
           </div>
