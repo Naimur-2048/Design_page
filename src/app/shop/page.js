@@ -984,17 +984,7 @@ const page = () => {
               </ul>
             </div>
 
-            <div>
-              <p className='mb-10'>CUSTOMERS</p>
-              <ul className='*:py-1 *:text-sm'>
-                <li><Link href={'/'} className='hover:text-orange-700'> Faqs</Link></li>
-                <li><Link href={'/'} className='hover:text-orange-700'> Shipping</Link></li>
-                <li><Link href={'/'} className='hover:text-orange-700'> Returns</Link></li>
-                <li><Link href={'/'} className='hover:text-orange-700'> Terms</Link></li>
-                <li><Link href={'/'} className='hover:text-orange-700'> Contract Us</Link></li>
-                <li><Link href={'/'} className='hover:text-orange-700'> Privacy</Link></li>  
-              </ul>
-            </div>
+          
 
             <div>
               <p className='mb-10'>CONTRACT US</p>
