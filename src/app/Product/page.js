@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GiSnakeJar } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
@@ -39,12 +39,22 @@ import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax'
 const page = () => {
   const [count, setCount] = useState(1);
   const [changePage, setChangePage] = useState('one');
+  const [showButton, setShowButton] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const selecttab = (pres) => {
     setChangePage(pres)
-    console.log(changePage)
+
 
   }
+
+  useEffect(() => {
+    if (showOverlay) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showOverlay]);
 
   const props = { width: 400, height: 250, zoomWidth: 500, img: "images/by.jpg" };
 
@@ -98,32 +108,329 @@ const page = () => {
           </div>
         </div>
 
-        <div className='grid grid-cols-3 bg-white w-full px-26 border-b-1 border-gray-200'>
+        <div className='grid grid-cols-3 gap-8 bg-white w-full px-26  border-b border-gray-200'>
           <div className='flex items-center py-8 '>
             <a href="" className='text-white bg-gray-800 rounded-full p-1'><PiUnionBold size={"25"} /></a>
 
           </div>
 
-          <div className='flex gap-8 text-black'>
-            <button className="cursor-pointer hover:text-gray-400">
-              Demos
-            </button>
-            <button className="cursor-pointer hover:text-gray-400">
-              Features
-            </button>
-            <button className="cursor-pointer hover:text-gray-400">
-              Works
-            </button>
-            <button className="cursor-pointer hover:text-gray-400">Blog</button>
-            <button className="cursor-pointer hover:text-gray-400">Shop</button>
-            <button className="cursor-pointer hover:text-gray-400">
-              Pages
-            </button>
-            <button className="cursor-pointer hover:text-gray-400">
-              Extra
-            </button>
+          <ul className='flex items-center gap-8 text-black [&>li]:py-8'>
 
-          </div>
+            <li className="relative cursor-pointer [&>div]:hidden hover:[&>div]:block ">
+              <span 
+              // onMouseEnter={() => {
+              //   setShowButton(true);
+              //   setShowOverlay(true);
+              // }} 
+              className="hover:text-gray-400">Demos</span>
+
+              {/* 🔳 Fullscreen Overlay */}
+              <div className="absolute left-[-550px] top-[94px] h-[900px] w-[1518px] bg-white py-20  z-10 text-gray-600 overflow-y-scroll   transition-all duration-300">
+                <div className=" w-full px-20 grid grid-cols-5 gap-10">
+
+                  {/* Column 1 */}
+                  <div className='pb-20'>
+                    <span className="block text-lg text-black font-semibold mb-3">Classic</span>
+                    <ul className="space-y-2">
+                      <li className="hover:text-black"><Link href='/'>Classic agency</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Classic Business</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>WCGS</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Classic Rental</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Classic Innovators</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Classic Resturants</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Logistics</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Classic Photographical</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>Hot</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Classic Medical</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Classic Yoga</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Classic Workshop</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Kindergarden</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic App Lotting</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Consultants</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Trading</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Hotel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Saas</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Stadio</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Firm</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Lawyer</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Starup</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Help Center</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Classic Travel</Link></li>
+                    </ul>
+                  </div>
+
+                  {/* Col 2 */}
+                  <div>
+                    <span className="block text-lg text-black font-semibold mb-3">Creative</span>
+                    <ul className="space-y-2">
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Lab</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Marketing</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Real Estate</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative agency</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Prototype</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Creative Company</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Designer</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Event</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Creative Bristol</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Creative Software</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Creative Stadio</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Creative Corporate</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Photographer</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Product</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Personal</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Digital Agency</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Freelanc</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Creative Fitness</Link></li>
+                    </ul>
+                  </div>
+
+                  {/* 3rd col */}
+                  <div>
+                    <span className="block text-lg text-black font-semibold mb-3">Portfolio</span>
+                    <ul className="space-y-2">
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio Lab</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio Marketing</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio Real Estate</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio agency</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio Prototype</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Company</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Designer</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio Event</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Bristol</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Portfolio Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Software</Link></li>                                          
+                      <li className="hover:text-black"><Link href='/'>Portfolio Photographer</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Corporate</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Product</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Personal</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Digital Agency</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Freelanc</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Fitness</Link></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <span className="block text-lg text-black font-semibold mb-3">Blog</span>
+                   <ul className="space-y-2">
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog Lab</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog Marketing</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog Real Estate</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog agency</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog Prototype</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Blog Company</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Designer</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog Event</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Blog Bristol</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Blog Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Blog Software</Link></li>                                          
+                      <li className="hover:text-black"><Link href='/'>Blog Photographer</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Corporate</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Product</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Personal</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Digital Agency</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Freelanc</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Blog Fitness</Link></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <span className="block text-lg text-black font-semibold mb-3">Shop</span>
+                    <ul className="space-y-2">
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop Lab</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop Marketing</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop Real Estate</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop agency</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop Prototype</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Company</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Designer</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop Event</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Portfolio Bristol</Link></li>
+                      <li className="hover:text-black">
+                        <Link href='/' className='flex items-center gap-2'>
+                          <p>Shop Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
+                        </Link>
+                      </li>
+                      <li className="hover:text-black"><Link href='/'>Shop Software</Link></li>                                          
+                      <li className="hover:text-black"><Link href='/'>Shop Photographer</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Corporate</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Product</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Personal</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Digital Agency</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Travel</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Freelanc</Link></li>
+                      <li className="hover:text-black"><Link href='/'>Shop Fitness</Link></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li className="cursor-pointer hover:text-gray-400">
+              <span> Features</span>
+            </li>
+            <li className="cursor-pointer hover:text-gray-400">
+              <span> Works</span>
+            </li>
+            <li className="cursor-pointer hover:text-gray-400">
+              <span> Blog</span>
+            </li>
+            <li className="cursor-pointer hover:text-gray-400">
+              <span> Shop</span>
+            </li>
+            <li className="cursor-pointer hover:text-gray-400">
+              <span>Pages</span>
+            </li>
+            <li className="cursor-pointer hover:text-gray-400">
+              <span> Extra</span>
+            </li>
+
+          </ul>
 
 
           <div className='flex justify-end items-center gap-5'>
@@ -158,10 +465,11 @@ const page = () => {
                   },
                   largeImage: {
                     src: "images/by.jpg",
-                    width: 1200,
-                    height: 1800,
-                    enlargedImagePosition: 'over',
-                  }
+                    width: 1800,
+                    height: 2225,
+
+                  },
+                  enlargedImagePosition: 'over',
                 }} />
               </Link>
               {/* <img src='images/by.jpg' className='w-full h-[750px]' /> */}
@@ -208,8 +516,8 @@ const page = () => {
             <p>Color</p>
             <div className='flex gap-1 py-3'>
 
-             <span><img src='images/by.jpg' className='h-[58px] w-[58px]' /></span> 
-              <span onClick={() =>selecttab ('black')}> <img src='images/bb.jpg' className='h-[58px] w-[58px]' /></span> 
+              <span><img src='images/by.jpg' className='h-[58px] w-[58px]' /></span>
+              <span onClick={() => selecttab('black')}> <img src='images/bb.jpg' className='h-[58px] w-[58px]' /></span>
               <img src='images/bw.jpg' className='h-[58px] w-[58px]' />
               <img src='images/br.jpg' className='h-[58px] w-[58px]' />
               <img src='images/bp.jpg' className='h-[58px] w-[58px]' />
@@ -217,9 +525,9 @@ const page = () => {
 
             <div className='w-[51%] grid grid-cols-2 gap-2 py-4'>
               <div className='bg-gray-200 flex justify-between items-center text-black w-full'>
-                <button onClick={() => setCount(count>1 ? count-1 : 1)} className='py-3 px-4 cursor-pointer'><FaMinus />
+                <button onClick={() => setCount(count > 1 ? count - 1 : 1)} className='py-3 px-4 cursor-pointer'><FaMinus />
                 </button>
-                <button onClick={() => setCount(count > 0 ? count - 1 : 0)} className='py-3 px-4 cursor-pointer'><FaMinus /></button>
+
                 <p><input value={count} className='w-12 h-full outline-none text-center' /></p>
                 <button onClick={() => setCount(count + 1)} className='py-3 px-4 cursor-pointer'><FaPlus /></button>
               </div>
@@ -342,10 +650,10 @@ const page = () => {
           </div>
 
           <div className='w-full grid grid-cols-2 gap-20 pb-25 px-25 border-b-1 border-gray-300'>
-          <div><img src='images/demo4.png' className='h-[773px] w-full '/></div>
-          <div className='flex justify-center items-center'><img src='images/abc.png' className='h-[541px] w-[433px] '/></div>
-          <div className='flex justify-center items-center'><img src='images/abc.png' className='h-[541px] w-[433px] '/></div>
-          <div><img src='images/abc.png' className='h-[773px] w-full '/></div>
+            <div><img src='images/demo4.png' className='h-[773px] w-full ' /></div>
+            <div className='flex justify-center items-center'><img src='images/abc.png' className='h-[541px] w-[433px] ' /></div>
+            <div className='flex justify-center items-center'><img src='images/abc.png' className='h-[541px] w-[433px] ' /></div>
+            <div><img src='images/abc.png' className='h-[773px] w-full ' /></div>
 
           </div>
 
