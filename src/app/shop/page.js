@@ -980,8 +980,7 @@ const page = () => {
                 <li><Link href={'/'} className='hover:text-orange-700'> New Arrivals</Link></li>
                 <li><Link href={'/'} className='hover:text-orange-700'> Latest Collection</Link></li>
                 <li><Link href={'/'} className='hover:text-orange-700'> Gift Card</Link></li>
-                <li><Link href={'/'} className='hover:text-orange-700'> Top seller</Link></li>
-                
+                <li><Link href={'/'} className='hover:text-orange-700'> Top seller</Link></li>               
               </ul>
             </div>
 

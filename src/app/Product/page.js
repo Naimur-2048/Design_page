@@ -34,7 +34,7 @@ import Link from 'next/link';
 
 
 const page = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [changePage, setChangePage] = useState('one');
   
    const selecttab = (pres) =>{
@@ -177,8 +177,9 @@ const page = () => {
             </p>
             <p>Color</p>
             <div className='flex gap-1 py-3'>
-              <img src='images/by.jpg' className='h-[58px] w-[58px]' />
-              <img src='images/bb.jpg' className='h-[58px] w-[58px]' />
+
+             <span><img src='images/by.jpg' className='h-[58px] w-[58px]' /></span> 
+              <span onClick={() =>selecttab ('black')}> <img src='images/bb.jpg' className='h-[58px] w-[58px]' /></span> 
               <img src='images/bw.jpg' className='h-[58px] w-[58px]' />
               <img src='images/br.jpg' className='h-[58px] w-[58px]' />
               <img src='images/bp.jpg' className='h-[58px] w-[58px]' />
@@ -186,7 +187,7 @@ const page = () => {
 
             <div className='w-[51%] grid grid-cols-2 gap-2 py-4'>
               <div className='bg-gray-200 flex justify-between items-center text-black w-full'>
-                <button onClick={() => setCount(count>0 ? count-1 : 0)} className='py-3 px-4 cursor-pointer'><FaMinus /></button>
+                <button onClick={() => setCount(count>1 ? count-1 : 1)} className='py-3 px-4 cursor-pointer'><FaMinus /></button>
                 <p><input value={count} className='w-12 h-full outline-none text-center' /></p>
                 <button onClick={() => setCount(count+1)} className='py-3 px-4 cursor-pointer'><FaPlus /></button>
               </div>
@@ -343,7 +344,7 @@ const page = () => {
           <div className='w-full flex gap-2 justify-center items-center text-gray-400 '>
             <button onClick={() => selecttab('one')} className='cursor-pointer'><GoDotFill /></button>
             <button onClick={() => selecttab('two')} className='cursor-pointer'><GoDotFill /></button>
-            <p><GoDotFill /></p>
+            <button onClick={() => selecttab('three')} className='cursor-pointer'><GoDotFill /></button>
 
           </div>
 
