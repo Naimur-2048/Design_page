@@ -41,6 +41,12 @@ const page = () => {
   const [changePage, setChangePage] = useState('one');
   const [showButton, setShowButton] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [showPhoto, setShowPhoto] = useState('one');
+  const zoomRef = useRef(null);
+
+  const selectPhoto = (value) => {
+    setShowPhoto(value)
+  }
 
   const selecttab = (pres) => {
     setChangePage(pres)
@@ -63,6 +69,69 @@ const page = () => {
   // Little helpers ...
   const url = (name, wrap = false) =>
     `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`
+
+  const [cardImages, setCardImages] = useState([
+    { id: 1, img: 'images/by.jpg' },
+    { id: 2, img: 'images/by1.jpg' },
+    { id: 3, img: 'images/by2.jpg' },
+    { id: 4, img: 'images/by3.jpg' },
+  ])
+  const [cardSelectedImage, setCardSelectedImate] = useState('images/by.jpg')
+
+  const [cardSideImages, setCardSideImages] = useState([
+    { id: 1, img: 'images/bb.jpg' },
+    { id: 2, img: 'images/bbb1.jpg' },
+    { id: 3, img: 'images/bbb2.jpg' },
+    { id: 4, img: 'images/bbb3.jpg' },
+  ])
+
+
+  const [cardSideSelectedImage, setCardSideSelectedImage] = useState('images/bb.jpg')
+
+
+  const [sideImages, setSideImages] = useState([
+    { id: 1, img: 'images/by.jpg' },
+    { id: 2, img: 'images/bb.jpg' },
+    { id: 3, img: 'images/bw.jpg' },
+    { id: 4, img: 'images/br.jpg' },
+    { id: 5, img: 'images/bp.jpg' },
+  ])
+
+  const [sideSelectImages, setSideSelectImages] = useState('images/by.jpg')
+
+  
+
+  const [imageColors, setImageColors] = useState([
+    {
+      id: 1,
+      color: 'yello',
+      smallImg: 'images/by.jpg',
+      images: [
+        { id: 1, img: 'images/by.jpg' },
+        { id: 2, img: 'images/by1.jpg' },
+      ]
+    },
+    {
+      id: 2,
+      color: 'black',
+      smallImg: 'images/bbb1.jpg',
+      images: [
+        { id: 3, img: 'images/by2.jpg' },
+        { id: 4, img: 'images/by3.jpg' },
+      ]
+    },
+  ])
+
+  const [thumbnailImages, setThumbnailImages] = useState([])
+
+  const changeCardImageColors = (id) => {
+
+    const findSingleObject = imageColors.find(item => item.id == id)
+    
+    const images = findSingleObject.images
+    setThumbnailImages(images)
+    setSideSelectImages(images[0].img)
+  }
 
   return (
     <>
@@ -117,12 +186,12 @@ const page = () => {
           <ul className='flex items-center gap-8 text-black [&>li]:py-8'>
 
             <li className="relative cursor-pointer [&>div]:hidden hover:[&>div]:block ">
-              <span 
-              // onMouseEnter={() => {
-              //   setShowButton(true);
-              //   setShowOverlay(true);
-              // }} 
-              className="hover:text-gray-400">Demos</span>
+              <span
+                // onMouseEnter={() => {
+                //   setShowButton(true);
+                //   setShowOverlay(true);
+                // }} 
+                className="hover:text-gray-400">Demos</span>
 
               {/* 🔳 Fullscreen Overlay */}
               <div className="absolute left-[-550px] top-[94px] h-[900px] w-[1518px] bg-white py-20  z-10 text-gray-600 overflow-y-scroll   transition-all duration-300">
@@ -281,7 +350,7 @@ const page = () => {
                           <p>Portfolio Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
                         </Link>
                       </li>
-                      <li className="hover:text-black"><Link href='/'>Portfolio Software</Link></li>                                          
+                      <li className="hover:text-black"><Link href='/'>Portfolio Software</Link></li>
                       <li className="hover:text-black"><Link href='/'>Portfolio Photographer</Link></li>
                       <li className="hover:text-black"><Link href='/'>Portfolio Corporate</Link></li>
                       <li className="hover:text-black"><Link href='/'>Portfolio Product</Link></li>
@@ -298,7 +367,7 @@ const page = () => {
 
                   <div>
                     <span className="block text-lg text-black font-semibold mb-3">Blog</span>
-                   <ul className="space-y-2">
+                    <ul className="space-y-2">
                       <li className="hover:text-black">
                         <Link href='/' className='flex items-center gap-2'>
                           <p>Blog Lab</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
@@ -337,7 +406,7 @@ const page = () => {
                           <p>Blog Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
                         </Link>
                       </li>
-                      <li className="hover:text-black"><Link href='/'>Blog Software</Link></li>                                          
+                      <li className="hover:text-black"><Link href='/'>Blog Software</Link></li>
                       <li className="hover:text-black"><Link href='/'>Blog Photographer</Link></li>
                       <li className="hover:text-black"><Link href='/'>Blog Corporate</Link></li>
                       <li className="hover:text-black"><Link href='/'>Blog Product</Link></li>
@@ -393,7 +462,7 @@ const page = () => {
                           <p>Shop Archetect</p> <span className='text-[8px] bg-red-300 rounded-4xl p-1'>New</span>
                         </Link>
                       </li>
-                      <li className="hover:text-black"><Link href='/'>Shop Software</Link></li>                                          
+                      <li className="hover:text-black"><Link href='/'>Shop Software</Link></li>
                       <li className="hover:text-black"><Link href='/'>Shop Photographer</Link></li>
                       <li className="hover:text-black"><Link href='/'>Shop Corporate</Link></li>
                       <li className="hover:text-black"><Link href='/'>Shop Product</Link></li>
@@ -446,41 +515,16 @@ const page = () => {
         <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-15 p-30 '>
 
           <div className=' '>
-            {/* Big photo */}
-            <div>
-              <Link href='/'>
-                {/* <ReactImageZoom 
-                width={600}
-                  zoomPosition={"right"}
-                  zoomLensStyle={"opacity: 0.7;background-color: green; width: 50px !important; height: 50px !important; border-radius: 50px;"}
-                img={"images/by.jpg"}
-                height={450}
-                /> */}
 
-                <ReactImageMagnify {...{
-                  smallImage: {
-                    alt: 'Product Image',
-                    isFluidWidth: true,
-                    src: "images/by.jpg",
-                  },
-                  largeImage: {
-                    src: "images/by.jpg",
-                    width: 1800,
-                    height: 2225,
-
-                  },
-                  enlargedImagePosition: 'over',
-                }} />
-              </Link>
-              {/* <img src='images/by.jpg' className='w-full h-[750px]' /> */}
+            <div className='h-[750px] w-full '>
+              <img src={sideSelectImages} className='w-full h-[750px] border-4 border-red-500 ' />
             </div>
 
             {/* Small photo */}
             <div className='grid grid-cols-4 gap-2 py-5'>
-              <Link href='/'><img src='images/by.jpg' className='w-full h-[143px]' /></Link>
-              <Link href='/'><img src='images/by1.jpg' className='w-full h-[143px]' /></Link>
-              <Link href='/'><img src='images/by2.jpg' className='w-full h-[143px]' /></Link>
-              <Link href='/'><img src='images/by3.jpg' className='w-full h-[143px]' /></Link>
+              {thumbnailImages.map(naimur => (
+                <img key={naimur.id} onClick={() => setSideSelectImages(naimur.img)} src={naimur.img} className={`w-full cursor-pointer h-[143px] ${sideSelectImages == naimur.img ? 'border border-red-500' : ' '}`} />)
+              )}
             </div>
 
           </div>
@@ -516,11 +560,10 @@ const page = () => {
             <p>Color</p>
             <div className='flex gap-1 py-3'>
 
-              <span><img src='images/by.jpg' className='h-[58px] w-[58px]' /></span>
-              <span onClick={() => selecttab('black')}> <img src='images/bb.jpg' className='h-[58px] w-[58px]' /></span>
-              <img src='images/bw.jpg' className='h-[58px] w-[58px]' />
-              <img src='images/br.jpg' className='h-[58px] w-[58px]' />
-              <img src='images/bp.jpg' className='h-[58px] w-[58px]' />
+              {imageColors.map(item =>
+                <img key={item.id} onClick={() => changeCardImageColors(item.id)} src={item.smallImg} className={`h-[58px] cursor-pointer w-[58px] ${sideSelectImages == item.id ? 'border border-red-500' : ' '}`} />
+              )}
+
             </div>
 
             <div className='w-[51%] grid grid-cols-2 gap-2 py-4'>
