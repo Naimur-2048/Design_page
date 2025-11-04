@@ -30,6 +30,7 @@ import { RiVisaLine } from "react-icons/ri";
 import { FaCcMastercard } from "react-icons/fa6";
 import { FaCcPaypal } from "react-icons/fa";
 import { FaCcStripe } from "react-icons/fa";
+
 import Link from 'next/link';
 import ReactImageZoom from 'react-image-zoom';
 import ReactImageMagnify from 'react-image-magnify';
@@ -70,36 +71,7 @@ const page = () => {
   const url = (name, wrap = false) =>
     `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`
 
-  const [cardImages, setCardImages] = useState([
-    { id: 1, img: 'images/by.jpg' },
-    { id: 2, img: 'images/by1.jpg' },
-    { id: 3, img: 'images/by2.jpg' },
-    { id: 4, img: 'images/by3.jpg' },
-  ])
-  const [cardSelectedImage, setCardSelectedImate] = useState('images/by.jpg')
-
-  const [cardSideImages, setCardSideImages] = useState([
-    { id: 1, img: 'images/bb.jpg' },
-    { id: 2, img: 'images/bbb1.jpg' },
-    { id: 3, img: 'images/bbb2.jpg' },
-    { id: 4, img: 'images/bbb3.jpg' },
-  ])
-
-
-  const [cardSideSelectedImage, setCardSideSelectedImage] = useState('images/bb.jpg')
-
-
-  const [sideImages, setSideImages] = useState([
-    { id: 1, img: 'images/by.jpg' },
-    { id: 2, img: 'images/bb.jpg' },
-    { id: 3, img: 'images/bw.jpg' },
-    { id: 4, img: 'images/br.jpg' },
-    { id: 5, img: 'images/bp.jpg' },
-  ])
-
   const [sideSelectImages, setSideSelectImages] = useState('images/by.jpg')
-
-  
 
   const [imageColors, setImageColors] = useState([
     {
@@ -109,20 +81,63 @@ const page = () => {
       images: [
         { id: 1, img: 'images/by.jpg' },
         { id: 2, img: 'images/by1.jpg' },
+        { id: 3, img: 'images/by2.jpg' },
+        { id: 4, img: 'images/by3.jpg' },
       ]
     },
     {
       id: 2,
       color: 'black',
-      smallImg: 'images/bbb1.jpg',
+      smallImg: 'images/bb.jpg',
       images: [
-        { id: 3, img: 'images/by2.jpg' },
-        { id: 4, img: 'images/by3.jpg' },
+        { id: 1, img: 'images/bb.jpg' },
+        { id: 2, img: 'images/bbb1.jpg' },
+        { id: 3, img: 'images/bbb2.jpg' },
+        { id: 4, img: 'images/bbb3.jpg' },
+        
+      ]
+    },
+    {
+      id: 3,
+      color: 'black',
+      smallImg: 'images/bw.jpg',
+      images: [
+        { id: 1, img: 'images/bw.jpg' },
+        { id: 2, img: 'images/bw1.jpg' },
+        { id: 3, img: 'images/bw2.jpg' },
+        { id: 4, img: 'images/bw3.jpg' },
+      ]
+    },
+    {
+      id: 4,
+      color: 'black',
+      smallImg: 'images/br.jpg',
+      images: [
+        { id: 1, img: 'images/br.jpg' },
+        { id: 2, img: 'images/br1.jpg' },
+        { id: 3, img: 'images/br2.jpg' },
+        { id: 4, img: 'images/br3.jpg' },
+      ]
+    },
+    {
+      id: 5,
+      color: 'black',
+      smallImg: 'images/bp.jpg',
+      images: [
+        { id: 1, img: 'images/bp.jpg' },
+        { id: 2, img: 'images/bp1.jpg' },
+        { id: 3, img: 'images/bp2.jpg' },
+        { id: 4, img: 'images/bp3.jpg' },
       ]
     },
   ])
 
-  const [thumbnailImages, setThumbnailImages] = useState([])
+  const [thumbnailImages, setThumbnailImages] = useState([ 
+      { id: 1, img: 'images/by.jpg' },
+        { id: 2, img: 'images/by1.jpg' },
+        { id: 3, img: 'images/by2.jpg' },
+        { id: 4, img: 'images/by3.jpg' },
+  ])
 
   const changeCardImageColors = (id) => {
 
@@ -522,8 +537,8 @@ const page = () => {
 
             {/* Small photo */}
             <div className='grid grid-cols-4 gap-2 py-5'>
-              {thumbnailImages.map(naimur => (
-                <img key={naimur.id} onClick={() => setSideSelectImages(naimur.img)} src={naimur.img} className={`w-full cursor-pointer h-[143px] ${sideSelectImages == naimur.img ? 'border border-red-500' : ' '}`} />)
+              {thumbnailImages.map(item => (
+                <img key={item.id} onClick={() => setSideSelectImages(item.img)} src={item.img} className={`w-full cursor-pointer h-[143px] ${sideSelectImages == item.img ? 'border border-red-500' : ' '}`} />)
               )}
             </div>
 
@@ -561,7 +576,7 @@ const page = () => {
             <div className='flex gap-1 py-3'>
 
               {imageColors.map(item =>
-                <img key={item.id} onClick={() => changeCardImageColors(item.id)} src={item.smallImg} className={`h-[58px] cursor-pointer w-[58px] ${sideSelectImages == item.id ? 'border border-red-500' : ' '}`} />
+                <img key={item.id} onClick={() => changeCardImageColors(item.id)} src={item.smallImg} className={`h-[58px] cursor-pointer w-[58px] ${sideSelectImages == item.smallImg ? 'border border-red-500' : ' '}`} />
               )}
 
             </div>
